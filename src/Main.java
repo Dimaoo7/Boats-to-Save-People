@@ -3,27 +3,34 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) {
-        int[] people = new int[]{3,5,3,4};
-        int limit = 5;
 
-        System.out.println(numRescueBoats(people,limit));
+        int[] score = new int[]{5,4,3,2,1};
+
+        System.out.println(Arrays.toString(findRelativeRanks(score)));
 
     }
 
 
-    public static int numRescueBoats(int[] people, int limit) {
-        int boats = 0;
-        Arrays.sort(people);
-        int i=0,j=people.length-1;
-        while(i<=j){
-            if((people[j]+people[i])<=limit){
-                i++;
-            }
-            j--;
-            boats++;
-        }
-        return boats;
+    public static String[] findRelativeRanks(int[] score) {
+
+
+        return null;
     }
+
+
+//    public static int numRescueBoats(int[] people, int limit) {
+//        int boats = 0;
+//        Arrays.sort(people);
+//        int i=0,j=people.length-1;
+//        while(i<=j){
+//            if((people[j]+people[i])<=limit){
+//                i++;
+//            }
+//            j--;
+//            boats++;
+//        }
+//        return boats;
+//    }
 //    public static int[] sortEd(int[] people) {
 //        boolean isSorted;
 //        do {
