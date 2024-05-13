@@ -4,50 +4,89 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int[] score = new int[]{10,3,8,9,4};
+        int[] nums1 = new int[]{0};
+        int m = 0;
+        int[] nums2 = new int[]{1};
+        int n = 1;
 
-        System.out.println(Arrays.toString(findRelativeRanks(score)));
+        merge(nums1, m, nums2, n);
 
     }
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+                int i = m - 1;
+                int j = n - 1;
+                int k = m + n - 1;
 
-        public static int findMax(int[] score) {
-            int maxScore = 0;
-            for (int s : score) {
-                if (s > maxScore) {
-                    maxScore = s;
-                }
-            }
-            return maxScore;
-        }
-
-        public static String[] findRelativeRanks(int[] score) {
-            int N = score.length;
-
-
-            int M = findMax(score);
-            int[] scoreToIndex = new int[M + 1];
-            for (int i = 0; i < N; i++) {
-                scoreToIndex[score[i]] = i + 1;
-            }
-
-            final String[] MEDALS = {"Gold Medal", "Silver Medal", "Bronze Medal"};
-
-            String[] rank = new String[N];
-            int place = 1;
-            for (int i = M; i >= 0; i--) {
-                if (scoreToIndex[i] != 0) {
-                    int originalIndex = scoreToIndex[i] - 1;
-                    if (place < 4) {
-                        rank[originalIndex] = MEDALS[place - 1];
+                while (i >= 0 && j >= 0) {
+                    if (nums1[i] > nums2[j]) {
+                        nums1[k] = nums1[i];
+                        i--;
                     } else {
-                        rank[originalIndex] = String.valueOf(place);
+                        nums1[k] = nums2[j];
+                        j--;
                     }
-                    place++;
+                    k--;
+                }
+
+                while (i >= 0) {
+                    nums1[k] = nums1[i];
+                    i--;
+                    k--;
+                }
+
+                while (j >= 0) {
+                    nums1[k] = nums2[j];
+                    j--;
+                    k--;
                 }
             }
-            return rank;
-        }
-    }
+
+//    public static int[] withoutZeros(int[] nums, int length) {
+//        int[] res = new int[length];
+//        if (nums.length != length && length != 0) {
+//            System.arraycopy(nums, 0, res, 0, length);
+//            return res;
+//        }
+//        return nums;
+//    }
+//         public static int findMax(int[] score) {
+//             int maxScore = 0;
+//             for (int s : score) {
+//                 if (s > maxScore) {
+//                     maxScore = s;
+//                 }
+//             }
+//             return maxScore;
+//         }
+
+//         public static String[] findRelativeRanks(int[] score) {
+//             int N = score.length;
+
+
+//             int M = findMax(score);
+//             int[] scoreToIndex = new int[M + 1];
+//             for (int i = 0; i < N; i++) {
+//                 scoreToIndex[score[i]] = i + 1;
+//             }
+
+//             final String[] MEDALS = {"Gold Medal", "Silver Medal", "Bronze Medal"};
+
+//             String[] rank = new String[N];
+//             int place = 1;
+//             for (int i = M; i >= 0; i--) {
+//                 if (scoreToIndex[i] != 0) {
+//                     int originalIndex = scoreToIndex[i] - 1;
+//                     if (place < 4) {
+//                         rank[originalIndex] = MEDALS[place - 1];
+//                     } else {
+//                         rank[originalIndex] = String.valueOf(place);
+//                     }
+//                     place++;
+//                 }
+//             }
+//             return rank;
+//         }
+//     }
 
 
 //    public static int numRescueBoats(int[] people, int limit) {
